@@ -2,20 +2,11 @@ const { Client, Events, GatewayIntentBits, Partials } = require('discord.js');
 const config = require('./settings/config');
 
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ],
-    partials: [
-        Partials.Channel,
-        Partials.GuildMember,
-        Partials.Message,
-        Partials.User
-    ],
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+    partials: [Partials.Channel, Partials.GuildMember, Partials.Message, Partials.User],
     allowedMentions: {
-        parse: []
-    }
+        parse: [],
+    },
 });
 
 client.login(config.bot.token);
@@ -30,8 +21,10 @@ client.on(Events.MessageCreate, async (message) => {
             content: 'وعليكم السلام ورحمه الله وبركاته',
             allowedMentions: {
                 parse: ['everyone', 'roles'],
-                repliedUser: false
-            }
+                repliedUser: false,
+            },
         });
     }
 });
+
+// TODO: Message Update
